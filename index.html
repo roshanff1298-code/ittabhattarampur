@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Ittabhatta rampur - Colony Cricket Stars</title>
+<title>Ittabhattarampur - Colony Cricket Stars</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -16,78 +16,157 @@ body{font-family:'Nunito',sans-serif;background:#f0f4ff;min-height:100vh}
 <body>
 <div id="root"></div>
 <script type="text/babel">
+
 const players = [
-  {initials:'NA',real:'Naksh / Adi',nick:'Alien Hazlewood',role:'Bowling All-rounder from thailand',color:'#1565c0',light:'#e3f2fd',dark:'#0C447C'},
-  {initials:'RI',real:'Rounak / Ishan',nick:'Kulfi bowlinga',role:'Batting All-rounder from srilanka',color:'#2e7d32',light:'#e8f5e9',dark:'#27500A'},
-  {initials:'RH',real:'Rahul',nick:'Mastafizur Bengali',role:'Fast bowler from bangladesh',color:'#e65100',light:'#fff3e0',dark:'#633806'},
-  {initials:'VG',real:'Vaishno',nick:'Ganja Russel',role:'Wide Fhekne Wala Bowler from west indies',color:'#6a1b9a',light:'#f3e5f5',dark:'#3C3489'},
-  {initials:'BU',real:'Bablu',nick:'kaba',role:'na batting na bowling',color:'#c62828',light:'#ffebee',dark:'#7f0000'},
+  {initials:'NA',real:'Naksh / Adi',nick:'Alien Hazlewood',role:'Bowling All-rounder from Thailand',color:'#1565c0',light:'#e3f2fd',dark:'#0C447C'},
+  {initials:'RI',real:'Rounak / Ishan',nick:'Kulfi Bowlinga',role:'Batting All-rounder from Sri Lanka',color:'#2e7d32',light:'#e8f5e9',dark:'#27500A'},
+  {initials:'RH',real:'Rahul',nick:'Mastafizur Bengali',role:'Fast Bowler from Bangladesh',color:'#e65100',light:'#fff3e0',dark:'#633806'},
+  {initials:'VG',real:'Vaishno',nick:'Ganja Russel',role:'Wide Fhekne Wala Bowler from West Indies',color:'#6a1b9a',light:'#f3e5f5',dark:'#3C3489'},
+  {initials:'BU',real:'Bablu',nick:'Kaba',role:'Na Batting Na Bowling',color:'#c62828',light:'#ffebee',dark:'#7f0000'},
   {initials:'RJ',real:'Rajan',nick:'Free Fire ka Fhakdi',role:'Noob Player from China',color:'#00838f',light:'#e0f7fa',dark:'#004d56'}
 ];
 
 function App() {
   const [selected, setSelected] = React.useState(null);
+
   return (
     <div>
-      <div style={{background:'#1a237e',padding:'1.5rem',textAlign:'center'}}>
-        <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'2rem',fontWeight:800,color:'#fff'}}>Ittabhattarampur</div>
-        <div style={{fontSize:'0.8rem',color:'rgba(255,255,255,0.7)',marginTop:'4px',letterSpacing:'2px',textTransform:'uppercase',fontWeight:600}}>Colony Cricket Stars</div>
+      {/* Header */}
+      <div style={{background:'linear-gradient(135deg,#1a237e,#283593)',padding:'1.8rem',textAlign:'center'}}>
+        <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'2.2rem',fontWeight:800,color:'#fff',letterSpacing:'1px'}}>
+          🏏 Ittabhattarampur
+        </div>
+        <div style={{fontSize:'0.8rem',color:'rgba(255,255,255,0.75)',marginTop:'6px',letterSpacing:'3px',textTransform:'uppercase',fontWeight:600}}>
+          Colony Cricket Stars
+        </div>
       </div>
+
+      {/* Banner */}
       <div style={{background:'#f9a825',padding:'10px',textAlign:'center',fontSize:'14px',fontWeight:700,color:'#4a2c00'}}>
         🏏 Meet the star legends of our colony 🏏
       </div>
-      <div style={{maxWidth:'900px',margin:'0 auto',padding:'2rem 1rem'}}>
-        <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1.5rem',fontWeight:700,textAlign:'center',color:'#1a237e',marginBottom:'1.5rem'}}>Our Colony Stars</div>
 
+      <div style={{maxWidth:'960px',margin:'0 auto',padding:'2rem 1rem'}}>
+
+        <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1.6rem',fontWeight:700,textAlign:'center',color:'#1a237e',marginBottom:'1.8rem'}}>
+          Our Colony Stars ⭐
+        </div>
+
+        {/* Selected Player Profile */}
         {selected !== null && (
-          <div style={{background:'#fff',borderRadius:'16px',border:'2px solid #e8eaf6',padding:'1.5rem',marginBottom:'1.5rem',boxShadow:'0 4px 20px rgba(0,0,0,0.08)'}}>
+          <div style={{background:'#fff',borderRadius:'18px',border:`2px solid ${players[selected].color}`,padding:'1.8rem',marginBottom:'1.8rem',boxShadow:`0 6px 24px ${players[selected].color}22`}}>
             <div style={{display:'flex',alignItems:'center',gap:'16px',marginBottom:'1.25rem'}}>
-              <div style={{width:'60px',height:'60px',borderRadius:'50%',background:players[selected].color,display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Baloo 2',cursive",fontSize:'20px',fontWeight:800,color:'#fff',flexShrink:0}}>{players[selected].initials}</div>
+              <div style={{width:'64px',height:'64px',borderRadius:'50%',background:players[selected].color,display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Baloo 2',cursive",fontSize:'22px',fontWeight:800,color:'#fff',flexShrink:0,boxShadow:`0 4px 12px ${players[selected].color}55`}}>
+                {players[selected].initials}
+              </div>
               <div>
-                <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1.2rem',fontWeight:700}}>{players[selected].real}</div>
-                <div style={{fontSize:'13px',color:'#555',fontWeight:600}}>"{players[selected].nick}"</div>
+                <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1.3rem',fontWeight:700,color:'#1a1a2e'}}>
+                  {players[selected].real}
+                </div>
+                <div style={{fontSize:'13px',color:'#666',fontWeight:600,marginTop:'2px'}}>
+                  "{players[selected].nick}"
+                </div>
               </div>
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px'}}>
-              {[['Nickname',players[selected].nick],['Cricket Role',players[selected].role],['Real Name',players[selected].real],['Colony','Ittabhattarampur']].map(([l,v])=>(
-                <div key={l} style={{background:'#f8f9ff',borderRadius:'10px',border:'1px solid #e8eaf6',padding:'12px'}}>
-                  <div style={{fontSize:'10px',color:'#888',fontWeight:700,letterSpacing:'1px',textTransform:'uppercase',marginBottom:'4px'}}>{l}</div>
-                  <div style={{fontSize:'14px',fontWeight:700,color:'#1a237e'}}>{v}</div>
+
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px',marginBottom:'14px'}}>
+              {[
+                ['Nickname', players[selected].nick],
+                ['Cricket Role', players[selected].role],
+                ['Real Name', players[selected].real],
+                ['Colony', 'Ittabhattarampur']
+              ].map(([label, value]) => (
+                <div key={label} style={{background:players[selected].light,borderRadius:'12px',border:`1px solid ${players[selected].color}33`,padding:'12px'}}>
+                  <div style={{fontSize:'10px',color:'#888',fontWeight:700,letterSpacing:'1px',textTransform:'uppercase',marginBottom:'4px'}}>
+                    {label}
+                  </div>
+                  <div style={{fontSize:'14px',fontWeight:700,color:players[selected].dark}}>
+                    {value}
+                  </div>
                 </div>
               ))}
             </div>
-            <button onClick={()=>setSelected(null)} style={{marginTop:'14px',padding:'8px 20px',background:'#fff',border:'1.5px solid #ddd',borderRadius:'10px',fontSize:'13px',fontWeight:700,color:'#555',cursor:'pointer'}}>Close profile</button>
+
+            <button
+              onClick={() => setSelected(null)}
+              style={{padding:'8px 22px',background:'#fff',border:'1.5px solid #ddd',borderRadius:'10px',fontSize:'13px',fontWeight:700,color:'#555',cursor:'pointer'}}
+            >
+              ✕ Close Profile
+            </button>
           </div>
         )}
 
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))',gap:'1.25rem',marginBottom:'2rem'}}>
-          {players.map((p,i)=>(
-            <div key={i} onClick={()=>setSelected(selected===i?null:i)} style={{background:'#fff',borderRadius:'16px',overflow:'hidden',boxShadow:selected===i?`0 6px 20px ${p.color}33`:'0 2px 12px rgba(0,0,0,0.08)',cursor:'pointer',border:selected===i?`2px solid ${p.color}`:'1.5px solid #e8eaf6',transform:selected===i?'translateY(-4px)':'none',transition:'all .15s'}}>
+        {/* Player Cards Grid */}
+        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))',gap:'1.25rem',marginBottom:'2.5rem'}}>
+          {players.map((p, i) => (
+            <div
+              key={i}
+              onClick={() => setSelected(selected === i ? null : i)}
+              style={{
+                background:'#fff',
+                borderRadius:'18px',
+                overflow:'hidden',
+                boxShadow: selected === i ? `0 8px 24px ${p.color}44` : '0 2px 12px rgba(0,0,0,0.08)',
+                cursor:'pointer',
+                border: selected === i ? `2px solid ${p.color}` : '1.5px solid #e8eaf6',
+                transform: selected === i ? 'translateY(-6px)' : 'none',
+                transition:'all .2s ease'
+              }}
+            >
               <div style={{padding:'1.5rem 1rem 1rem',textAlign:'center'}}>
-                <div style={{width:'68px',height:'68px',borderRadius:'50%',background:p.color,display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Baloo 2',cursive",fontSize:'22px',fontWeight:800,margin:'0 auto 12px',color:'#fff'}}>{p.initials}</div>
-                <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1rem',fontWeight:700,color:'#1a1a2e',marginBottom:'3px'}}>{p.real}</div>
-                <div style={{fontSize:'11px',color:'#888',fontWeight:600,marginBottom:'8px'}}>also known as</div>
-                <div style={{display:'inline-block',padding:'4px 14px',borderRadius:'20px',fontSize:'12px',fontWeight:700,background:p.light,color:p.dark}}>{p.nick}</div>
+                <div style={{
+                  width:'68px',height:'68px',borderRadius:'50%',
+                  background:p.color,
+                  display:'flex',alignItems:'center',justifyContent:'center',
+                  fontFamily:"'Baloo 2',cursive",fontSize:'22px',fontWeight:800,
+                  margin:'0 auto 12px',color:'#fff',
+                  boxShadow:`0 4px 12px ${p.color}55`
+                }}>
+                  {p.initials}
+                </div>
+                <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1rem',fontWeight:700,color:'#1a1a2e',marginBottom:'3px'}}>
+                  {p.real}
+                </div>
+                <div style={{fontSize:'11px',color:'#aaa',fontWeight:600,marginBottom:'8px'}}>
+                  also known as
+                </div>
+                <div style={{display:'inline-block',padding:'4px 14px',borderRadius:'20px',fontSize:'12px',fontWeight:700,background:p.light,color:p.dark}}>
+                  {p.nick}
+                </div>
               </div>
               <div style={{borderTop:'1px solid #f0f0f0',padding:'10px 1rem',background:'#f8f9ff',textAlign:'center'}}>
-                <div style={{fontSize:'10px',color:'#888',fontWeight:700,letterSpacing:'1px',textTransform:'uppercase',marginBottom:'3px'}}>Cricket Role</div>
-                <div style={{fontSize:'13px',fontWeight:700,color:'#1a237e'}}>{p.role}</div>
+                <div style={{fontSize:'10px',color:'#aaa',fontWeight:700,letterSpacing:'1px',textTransform:'uppercase',marginBottom:'3px'}}>
+                  Cricket Role
+                </div>
+                <div style={{fontSize:'13px',fontWeight:700,color:'#1a237e'}}>
+                  {p.role}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div style={{textAlign:'center',padding:'1.5rem',borderTop:'1px solid #e0e0e0'}}>
-          <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1rem',fontWeight:700,color:'#1a237e'}}>ittabhattarampur.com</div>
-          <div style={{fontSize:'12px',color:'#888',marginTop:'4px'}}>Representing our colony with pride</div>
-          <div style={{display:'inline-block',background:'#e3f2fd',color:'#0C447C',fontSize:'11px',fontWeight:700,padding:'4px 12px',borderRadius:'20px',marginTop:'6px'}}>Colony Pride</div>
+        {/* Footer */}
+        <div style={{textAlign:'center',padding:'1.5rem',borderTop:'2px solid #e8eaf6'}}>
+          <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1.1rem',fontWeight:800,color:'#1a237e'}}>
+            🏏 ittabhattarampur.vercel.app
+          </div>
+          <div style={{fontSize:'12px',color:'#aaa',marginTop:'6px'}}>
+            Representing our colony with pride
+          </div>
+          <div style={{display:'inline-block',background:'#e3f2fd',color:'#0C447C',fontSize:'11px',fontWeight:700,padding:'5px 14px',borderRadius:'20px',marginTop:'8px'}}>
+            Colony Pride 🏆
+          </div>
         </div>
+
       </div>
     </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
+
 </script>
 </body>
 </html>

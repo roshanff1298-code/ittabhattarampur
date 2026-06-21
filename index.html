@@ -5,18 +5,81 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Ittabhattarampur - Colony Cricket Stars</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
-<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Nunito',sans-serif;background:#f0f4ff;min-height:100vh}
+.header{background:linear-gradient(135deg,#1a237e,#283593);padding:1.8rem;text-align:center}
+.header-title{font-family:'Baloo 2',cursive;font-size:2.2rem;font-weight:800;color:#fff;letter-spacing:1px}
+.header-sub{font-size:0.8rem;color:rgba(255,255,255,0.75);margin-top:6px;letter-spacing:3px;text-transform:uppercase;font-weight:600}
+.banner{background:#f9a825;padding:10px;text-align:center;font-size:14px;font-weight:700;color:#4a2c00}
+.container{max-width:960px;margin:0 auto;padding:2rem 1rem}
+.section-title{font-family:'Baloo 2',cursive;font-size:1.6rem;font-weight:700;text-align:center;color:#1a237e;margin-bottom:1.8rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem;margin-bottom:2.5rem}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);cursor:pointer;border:1.5px solid #e8eaf6;transition:all .2s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.card.active{transform:translateY(-6px)}
+.card-top{padding:1.5rem 1rem 1rem;text-align:center}
+.avatar{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-size:22px;font-weight:800;margin:0 auto 12px;color:#fff}
+.card-name{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:700;color:#1a1a2e;margin-bottom:3px}
+.card-aka{font-size:11px;color:#aaa;font-weight:600;margin-bottom:8px}
+.nick-badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.card-bottom{border-top:1px solid #f0f0f0;padding:10px 1rem;background:#f8f9ff;text-align:center}
+.role-label{font-size:10px;color:#aaa;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.role-text{font-size:13px;font-weight:700;color:#1a237e}
+.profile{background:#fff;border-radius:18px;padding:1.8rem;margin-bottom:1.8rem;display:none}
+.profile.show{display:block}
+.profile-header{display:flex;align-items:center;gap:16px;margin-bottom:1.25rem}
+.profile-avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-size:22px;font-weight:800;color:#fff;flex-shrink:0}
+.profile-name{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:700;color:#1a1a2e}
+.profile-nick{font-size:13px;color:#666;font-weight:600;margin-top:2px}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.profile-item{border-radius:12px;padding:12px}
+.profile-item-label{font-size:10px;color:#888;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.profile-item-value{font-size:14px;font-weight:700}
+.close-btn{padding:8px 22px;background:#fff;border:1.5px solid #ddd;border-radius:10px;font-size:13px;font-weight:700;color:#555;cursor:pointer}
+.close-btn:hover{background:#f5f5f5}
+.footer{text-align:center;padding:1.5rem;border-top:2px solid #e8eaf6}
+.footer-title{font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;color:#1a237e}
+.footer-sub{font-size:12px;color:#aaa;margin-top:6px}
+.footer-badge{display:inline-block;background:#e3f2fd;color:#0C447C;font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-top:8px}
 </style>
 </head>
 <body>
-<div id="root"></div>
-<script type="text/babel">
 
+<div class="header">
+  <div class="header-title">🏏 Ittabhattarampur</div>
+  <div class="header-sub">Colony Cricket Stars</div>
+</div>
+
+<div class="banner">🏏 Meet the star legends of our colony 🏏</div>
+
+<div class="container">
+  <div class="section-title">Our Colony Stars ⭐</div>
+
+  <!-- Profile Card (shown on click) -->
+  <div class="profile" id="profile">
+    <div class="profile-header">
+      <div class="profile-avatar" id="profile-avatar"></div>
+      <div>
+        <div class="profile-name" id="profile-name"></div>
+        <div class="profile-nick" id="profile-nick"></div>
+      </div>
+    </div>
+    <div class="profile-grid" id="profile-grid"></div>
+    <button class="close-btn" onclick="closeProfile()">✕ Close Profile</button>
+  </div>
+
+  <!-- Player Cards -->
+  <div class="grid" id="grid"></div>
+
+  <div class="footer">
+    <div class="footer-title">🏏 ittabhattarampur.vercel.app</div>
+    <div class="footer-sub">Representing our colony with pride</div>
+    <div class="footer-badge">Colony Pride 🏆</div>
+  </div>
+</div>
+
+<script>
 const players = [
   {initials:'NA',real:'Naksh / Adi',nick:'Alien Hazlewood',role:'Bowling All-rounder from Thailand',color:'#1565c0',light:'#e3f2fd',dark:'#0C447C'},
   {initials:'RI',real:'Rounak / Ishan',nick:'Kulfi Bowlinga',role:'Batting All-rounder from Sri Lanka',color:'#2e7d32',light:'#e8f5e9',dark:'#27500A'},
@@ -26,147 +89,88 @@ const players = [
   {initials:'RJ',real:'Rajan',nick:'Free Fire ka Fhakdi',role:'Noob Player from China',color:'#00838f',light:'#e0f7fa',dark:'#004d56'}
 ];
 
-function App() {
-  const [selected, setSelected] = React.useState(null);
+let selected = null;
 
-  return (
-    <div>
-      {/* Header */}
-      <div style={{background:'linear-gradient(135deg,#1a237e,#283593)',padding:'1.8rem',textAlign:'center'}}>
-        <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'2.2rem',fontWeight:800,color:'#fff',letterSpacing:'1px'}}>
-          🏏 Ittabhattarampur
-        </div>
-        <div style={{fontSize:'0.8rem',color:'rgba(255,255,255,0.75)',marginTop:'6px',letterSpacing:'3px',textTransform:'uppercase',fontWeight:600}}>
-          Colony Cricket Stars
-        </div>
+function renderCards() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = players.map((p, i) => `
+    <div class="card" id="card-${i}" onclick="selectPlayer(${i})">
+      <div class="card-top">
+        <div class="avatar" style="background:${p.color};box-shadow:0 4px 12px ${p.color}55">${p.initials}</div>
+        <div class="card-name">${p.real}</div>
+        <div class="card-aka">also known as</div>
+        <div class="nick-badge" style="background:${p.light};color:${p.dark}">${p.nick}</div>
       </div>
-
-      {/* Banner */}
-      <div style={{background:'#f9a825',padding:'10px',textAlign:'center',fontSize:'14px',fontWeight:700,color:'#4a2c00'}}>
-        🏏 Meet the star legends of our colony 🏏
-      </div>
-
-      <div style={{maxWidth:'960px',margin:'0 auto',padding:'2rem 1rem'}}>
-
-        <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1.6rem',fontWeight:700,textAlign:'center',color:'#1a237e',marginBottom:'1.8rem'}}>
-          Our Colony Stars ⭐
-        </div>
-
-        {/* Selected Player Profile */}
-        {selected !== null && (
-          <div style={{background:'#fff',borderRadius:'18px',border:`2px solid ${players[selected].color}`,padding:'1.8rem',marginBottom:'1.8rem',boxShadow:`0 6px 24px ${players[selected].color}22`}}>
-            <div style={{display:'flex',alignItems:'center',gap:'16px',marginBottom:'1.25rem'}}>
-              <div style={{width:'64px',height:'64px',borderRadius:'50%',background:players[selected].color,display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Baloo 2',cursive",fontSize:'22px',fontWeight:800,color:'#fff',flexShrink:0,boxShadow:`0 4px 12px ${players[selected].color}55`}}>
-                {players[selected].initials}
-              </div>
-              <div>
-                <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1.3rem',fontWeight:700,color:'#1a1a2e'}}>
-                  {players[selected].real}
-                </div>
-                <div style={{fontSize:'13px',color:'#666',fontWeight:600,marginTop:'2px'}}>
-                  "{players[selected].nick}"
-                </div>
-              </div>
-            </div>
-
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px',marginBottom:'14px'}}>
-              {[
-                ['Nickname', players[selected].nick],
-                ['Cricket Role', players[selected].role],
-                ['Real Name', players[selected].real],
-                ['Colony', 'Ittabhattarampur']
-              ].map(([label, value]) => (
-                <div key={label} style={{background:players[selected].light,borderRadius:'12px',border:`1px solid ${players[selected].color}33`,padding:'12px'}}>
-                  <div style={{fontSize:'10px',color:'#888',fontWeight:700,letterSpacing:'1px',textTransform:'uppercase',marginBottom:'4px'}}>
-                    {label}
-                  </div>
-                  <div style={{fontSize:'14px',fontWeight:700,color:players[selected].dark}}>
-                    {value}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <button
-              onClick={() => setSelected(null)}
-              style={{padding:'8px 22px',background:'#fff',border:'1.5px solid #ddd',borderRadius:'10px',fontSize:'13px',fontWeight:700,color:'#555',cursor:'pointer'}}
-            >
-              ✕ Close Profile
-            </button>
-          </div>
-        )}
-
-        {/* Player Cards Grid */}
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))',gap:'1.25rem',marginBottom:'2.5rem'}}>
-          {players.map((p, i) => (
-            <div
-              key={i}
-              onClick={() => setSelected(selected === i ? null : i)}
-              style={{
-                background:'#fff',
-                borderRadius:'18px',
-                overflow:'hidden',
-                boxShadow: selected === i ? `0 8px 24px ${p.color}44` : '0 2px 12px rgba(0,0,0,0.08)',
-                cursor:'pointer',
-                border: selected === i ? `2px solid ${p.color}` : '1.5px solid #e8eaf6',
-                transform: selected === i ? 'translateY(-6px)' : 'none',
-                transition:'all .2s ease'
-              }}
-            >
-              <div style={{padding:'1.5rem 1rem 1rem',textAlign:'center'}}>
-                <div style={{
-                  width:'68px',height:'68px',borderRadius:'50%',
-                  background:p.color,
-                  display:'flex',alignItems:'center',justifyContent:'center',
-                  fontFamily:"'Baloo 2',cursive",fontSize:'22px',fontWeight:800,
-                  margin:'0 auto 12px',color:'#fff',
-                  boxShadow:`0 4px 12px ${p.color}55`
-                }}>
-                  {p.initials}
-                </div>
-                <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1rem',fontWeight:700,color:'#1a1a2e',marginBottom:'3px'}}>
-                  {p.real}
-                </div>
-                <div style={{fontSize:'11px',color:'#aaa',fontWeight:600,marginBottom:'8px'}}>
-                  also known as
-                </div>
-                <div style={{display:'inline-block',padding:'4px 14px',borderRadius:'20px',fontSize:'12px',fontWeight:700,background:p.light,color:p.dark}}>
-                  {p.nick}
-                </div>
-              </div>
-              <div style={{borderTop:'1px solid #f0f0f0',padding:'10px 1rem',background:'#f8f9ff',textAlign:'center'}}>
-                <div style={{fontSize:'10px',color:'#aaa',fontWeight:700,letterSpacing:'1px',textTransform:'uppercase',marginBottom:'3px'}}>
-                  Cricket Role
-                </div>
-                <div style={{fontSize:'13px',fontWeight:700,color:'#1a237e'}}>
-                  {p.role}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer */}
-        <div style={{textAlign:'center',padding:'1.5rem',borderTop:'2px solid #e8eaf6'}}>
-          <div style={{fontFamily:"'Baloo 2',cursive",fontSize:'1.1rem',fontWeight:800,color:'#1a237e'}}>
-            🏏 ittabhattarampur.vercel.app
-          </div>
-          <div style={{fontSize:'12px',color:'#aaa',marginTop:'6px'}}>
-            Representing our colony with pride
-          </div>
-          <div style={{display:'inline-block',background:'#e3f2fd',color:'#0C447C',fontSize:'11px',fontWeight:700,padding:'5px 14px',borderRadius:'20px',marginTop:'8px'}}>
-            Colony Pride 🏆
-          </div>
-        </div>
-
+      <div class="card-bottom">
+        <div class="role-label">Cricket Role</div>
+        <div class="role-text">${p.role}</div>
       </div>
     </div>
-  );
+  `).join('');
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App/>);
+function selectPlayer(i) {
+  if (selected === i) {
+    closeProfile();
+    return;
+  }
+  selected = i;
+  const p = players[i];
 
+  // Update profile
+  const avatar = document.getElementById('profile-avatar');
+  avatar.textContent = p.initials;
+  avatar.style.background = p.color;
+  avatar.style.boxShadow = `0 4px 12px ${p.color}55`;
+
+  document.getElementById('profile-name').textContent = p.real;
+  document.getElementById('profile-nick').textContent = `"${p.nick}"`;
+
+  const profileEl = document.getElementById('profile');
+  profileEl.style.border = `2px solid ${p.color}`;
+  profileEl.style.boxShadow = `0 6px 24px ${p.color}22`;
+
+  document.getElementById('profile-grid').innerHTML = [
+    ['Nickname', p.nick],
+    ['Cricket Role', p.role],
+    ['Real Name', p.real],
+    ['Colony', 'Ittabhattarampur']
+  ].map(([label, value]) => `
+    <div class="profile-item" style="background:${p.light};border:1px solid ${p.color}33">
+      <div class="profile-item-label">${label}</div>
+      <div class="profile-item-value" style="color:${p.dark}">${value}</div>
+    </div>
+  `).join('');
+
+  profileEl.classList.add('show');
+
+  // Highlight selected card
+  document.querySelectorAll('.card').forEach((c, idx) => {
+    if (idx === i) {
+      c.classList.add('active');
+      c.style.border = `2px solid ${p.color}`;
+      c.style.boxShadow = `0 8px 24px ${p.color}44`;
+    } else {
+      c.classList.remove('active');
+      c.style.border = '1.5px solid #e8eaf6';
+      c.style.boxShadow = '0 2px 12px rgba(0,0,0,0.08)';
+    }
+  });
+
+  profileEl.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function closeProfile() {
+  selected = null;
+  document.getElementById('profile').classList.remove('show');
+  document.querySelectorAll('.card').forEach(c => {
+    c.classList.remove('active');
+    c.style.border = '1.5px solid #e8eaf6';
+    c.style.boxShadow = '0 2px 12px rgba(0,0,0,0.08)';
+  });
+}
+
+renderCards();
 </script>
 </body>
 </html>
